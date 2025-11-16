@@ -31,3 +31,4 @@ Proyecto simple de nómina implementado en Java (POO).
 
 ## Autores
 - Carlos Raul Hernandez Lopez
+- Richard Reyes Jiménez
