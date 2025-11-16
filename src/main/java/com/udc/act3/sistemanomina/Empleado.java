@@ -1,20 +1,25 @@
 package com.udc.act3.sistemanomina;
 
+ /**
+ * Clase base para empleados.
+ */
 public abstract class Empleado { //Debe ser abstracta para que no se pueda instanciar, ya que no se pueden crear empleados genéricos sin tipo.
+
+
     protected String nombre;
-    protected int añosAntiguedad; 
+    protected int añosAntiguedad;
 
     public Empleado(String nombre, int añosAntiguedad) {
     if (nombre == null || nombre.isEmpty())
-        throw new Exceptions("Nombre inválido");
+        throw new ValidationException("Nombre inválido");
 
     if (añosAntiguedad < 0)
-        throw new Exceptions("Antigüedad no puede ser negativa");
+        throw new ValidationException("Antigüedad no puede ser negativa");
 
     this.nombre = nombre;
     this.añosAntiguedad = añosAntiguedad;
-    }
-    
+}
+
     public String getNombre() {
         return nombre;
     }
@@ -37,7 +42,7 @@ public abstract class Empleado { //Debe ser abstracta para que no se pueda insta
         double ded = calcularDeducciones();
         double ben = calcularBeneficios();
         double neto = bruto - ded + ben;
-        if (neto < 0) throw new Exceptions("Salario neto negativo para " + nombre);
+        if (neto < 0) throw new ValidationException("Salario neto negativo para " + nombre);
         return neto;
     }
 
